@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\{Invoices,Items};
+use App\{Invoices,Items,User};
 class ItemController extends Controller
 {
     /* Mostrar todos los items y el suaurio vinculado */

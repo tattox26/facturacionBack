@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Invoices extends Model
 {
     protected $fillable = [
-        'numero_factura', 'emisor', 'receptor','valor','iva','total','item_id'
+        'numero_factura', 'emisor','valor','iva','total','user_id',
     ];
 
-    public function item() {
-		return $this->belongsTo(Items::class,'item_id');
+    public function user() {
+		return $this->belongsTo(User::class,'user_id');
 	}
 }

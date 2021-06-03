@@ -15,10 +15,9 @@ class CreateInvoncesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('item_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->integer('numero_factura');
             $table->string('emisor');
-            $table->string('receptor');
             $table->integer('valor');
             $table->integer('iva');
             $table->integer('total');
@@ -26,7 +25,7 @@ class CreateInvoncesTable extends Migration
         });
 
         Schema::table('invoices', function($table) {
-            $table->foreign('item_id')->references('id')->on('items');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
