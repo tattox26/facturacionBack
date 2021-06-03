@@ -20,20 +20,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::prefix('factura')->group(function () {
     Route::post('register', 'UserController@register');
-    Route::post('login', 'UserController@authenticate');
-    Route::get('readInovice', 'FacturaController@index');
-    Route::post('storeInovice', 'FacturaController@store');
-
-    Route::get('read', 'itemController@index');
+    Route::post('login', 'UserController@authenticate'); 
 });
 
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::prefix('factura')->group(function () {
         Route::get('user', 'UserController@getAuthenticatedUser');
-        
         Route::post('store', 'itemController@store');
         Route::put('update/{id}', 'itemController@update');
         Route::delete('delete/{id}', 'itemController@destroy');
         Route::get('get/{id}', 'itemController@get'); 
+        Route::get('readInovice', 'FacturaController@index');
+        Route::post('storeInovice', 'FacturaController@store');
+        Route::get('read', 'itemController@index');
     });
 });
